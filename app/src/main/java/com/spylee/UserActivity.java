@@ -16,6 +16,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -25,6 +26,8 @@ public class UserActivity extends BackgroundActivity
         implements NavigationView.OnNavigationItemSelectedListener {
     TextView nav_header_name,nav_header_phone,nav_header_email;
     SharedPreferences sharedpreferences;
+
+
     public static final String MyPREFERENCES = "MyPrefs" ;
     FragmentManager fragmentManager;
     @Override
@@ -114,7 +117,6 @@ public class UserActivity extends BackgroundActivity
             fragmentManager.beginTransaction().replace(R.id.user_container,new UpdateStatus()).commit();
         }
         else if (id == R.id.nav_back) {
-
             Intent intent= new Intent(UserActivity.this,MainActivity.class);
             startActivity(intent);
         }

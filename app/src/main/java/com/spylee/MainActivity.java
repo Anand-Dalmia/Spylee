@@ -1,6 +1,7 @@
 package com.spylee;
 
 import android.Manifest;
+import android.annotation.SuppressLint;
 import android.app.Activity;
 import android.app.PendingIntent;
 import android.content.BroadcastReceiver;
@@ -171,6 +172,7 @@ public class MainActivity extends BackgroundActivity implements LocationListener
         return true;
     }
 
+    @SuppressLint("MissingPermission")
     protected void getLocation(final String status) throws IOException {
         try {
             if (isLocationEnabled(MainActivity.this)) {
@@ -232,8 +234,9 @@ public class MainActivity extends BackgroundActivity implements LocationListener
                                     } else {
                                         return;
                                     }
-
                                     SimpleMail.sendEmail(guardian.getEmail(), subject, message);
+                                    SendMail sendMail = new SendMail(MainActivity.this,guardian.getEmail(),subject,message);
+                                    sendMail.execute();
                                     int permissionCheck = ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.READ_PHONE_STATE);
                                     if (ContextCompat.checkSelfPermission(MainActivity.this, Manifest.permission.SEND_SMS)
                                             != PackageManager.PERMISSION_GRANTED) {
@@ -247,8 +250,9 @@ public class MainActivity extends BackgroundActivity implements LocationListener
                                         callPhoneNumber();
                                     } else {
                                         SmsManager sms = SmsManager.getDefault();
-                                        String msg = sharedpreferences.getString("name", null)+"Am in Emergency  at " + address;
+                                        String msg = sharedpreferences.getString("name", null)+" is in Emergency  at " + address;
                                         sms.sendTextMessage(guardian.getPhone(), null, msg, sentPI, deliveredPI);
+                                        SimpleMail.sendEmail(guardian.getEmail(), subject, message);
                                         callPhoneNumber();
                                     }
                                 }

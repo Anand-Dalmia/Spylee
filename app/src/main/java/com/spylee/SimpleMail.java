@@ -16,16 +16,14 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
-/**
- * Created by ronnykibet on 1/22/18.
- */
+
 
 public class SimpleMail {
 
     /**CHANGE ACCORDINGLY**/
     private static final String SMTP_HOST_NAME = "smtp.gmail.com"; //can be your host server smtp@yourdomain.com
-    private static final String SMTP_AUTH_USER = "itsajayrawal2001@gmail.com"; //your login username/email
-    private static final String SMTP_AUTH_PWD  = "ajay@2000"; //password/secret
+    private static final String SMTP_AUTH_USER = "ananddalmia44@gmail.com"; //your login username/email
+    private static final String SMTP_AUTH_PWD  = "anand@70049"; //password/secret
 
     private static Message message;
 

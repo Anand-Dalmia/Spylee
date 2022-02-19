@@ -252,7 +252,6 @@ public class MainActivity extends BackgroundActivity implements LocationListener
                                         SmsManager sms = SmsManager.getDefault();
                                         String msg = sharedpreferences.getString("name", null)+" is in Emergency  at " + address;
                                         sms.sendTextMessage(guardian.getPhone(), null, msg, sentPI, deliveredPI);
-                                        SimpleMail.sendEmail(guardian.getEmail(), subject, message);
                                         callPhoneNumber();
                                     }
                                 }

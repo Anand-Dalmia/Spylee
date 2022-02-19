@@ -54,6 +54,7 @@ public class BackgroundActivity extends AppCompatActivity {
                 public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
 
                     Person person = dataSnapshot.getValue(Person.class);
+                   assert person != null;
                     if (person.getStatus().equals("I Lost My Mobile")) {
                         try {
                           //  getLocation2();
